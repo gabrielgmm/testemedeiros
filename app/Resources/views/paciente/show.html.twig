@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Paciente</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ paciente.id }}</td>
+            </tr>
+            <tr>
+                <th>Enderecoid</th>
+                <td>{{ paciente.enderecoId }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ paciente.nome }}</td>
+            </tr>
+            <tr>
+                <th>Nomemae</th>
+                <td>{{ paciente.nomeMae }}</td>
+            </tr>
+            <tr>
+                <th>Nomepai</th>
+                <td>{{ paciente.nomePai }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ paciente.email }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if paciente.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <td>{% if paciente.data %}{{ paciente.data|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('paciente_index') }}">Retornar</a>
+        </li>
+        <li>
+            <a href="{{ path('paciente_edit', { 'id': paciente.id }) }}">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

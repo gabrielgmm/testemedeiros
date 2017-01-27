@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Enderecos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rua</th>
+                <th>Nomebairro</th>
+                <th>Status</th>
+                <th>Data</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for endereco in enderecos %}
+            <tr>
+                <td><a href="{{ path('endereco_show', { 'id': endereco.id }) }}">{{ endereco.id }}</a></td>
+                <td>{{ endereco.rua }}</td>
+                <td>{{ endereco.nomeBairro }}</td>
+                <td>{% if endereco.status %}Yes{% else %}No{% endif %}</td>
+                <td>{% if endereco.data %}{{ endereco.data|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('endereco_show', { 'id': endereco.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('endereco_edit', { 'id': endereco.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('endereco_new') }}">Create a new endereco</a>
+        </li>
+    </ul>
+{% endblock %}

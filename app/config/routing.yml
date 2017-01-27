@@ -1,0 +1,8 @@
+medeiros_teste:
+    resource: "@MedeirosTesteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
